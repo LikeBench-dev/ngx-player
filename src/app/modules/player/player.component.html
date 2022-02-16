@@ -1,0 +1,28 @@
+<div
+  #playerContainer
+  [ngStyle]="{ cursor: (playerService.changeControlsStyle$ | async) ? 'none' : 'default' }"
+  class="ng-player-wrapper"
+>
+  <video
+    #videoElement
+    class="video"
+    playsinline
+    preload="metadata"
+    poster="/assets/img/preview.jpg"
+    (click)="videoElement.paused ? videoElement.play() : videoElement.pause()"
+    (dblclick)="playerService.toggleFullScreen()"
+    [volume]="(playerService.volume$ | async) / 100"
+    [src]="(playerService.src$ | async) + '#t=0.1'"
+  >
+<!--    <source *ngIf="playerService.src$" [src]="playerService.src$ | async" [type]="getVideoType(src)" >-->
+    <p>
+      К сожалению, Ваш браузер не распознает ни один из доступных форматов видео. Попробуйте зайти с
+      другого браузера.
+    </p>
+  </video>
+
+    <ngx-player-controls (clickPlay)="video.paused ? video.play() : video.pause()">
+    </ngx-player-controls>
+
+
+</div>

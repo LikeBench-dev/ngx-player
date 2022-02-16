@@ -1,0 +1,68 @@
+<div
+  class="video-controls"
+  [ngClass]="{ play: playerService.changeControlsStyle$ | async }"
+>
+  <div class="video-buttons">
+    <div class="video-buttons-item">
+      <svg
+        width="21"
+        height="21"
+        viewBox="0 0 24 24"
+        class="control-icon"
+        [ngClass]="{ active: playerService.playerStatus$ | async }"
+        (click)="onClickPlay($event)"
+      >
+        <path [attr.d]="(playerService.playerStatus$ | async) ? controls.pause : controls.play" />
+      </svg>
+
+      <p class="trackTime">
+        {{ (playerService.currentTrackTime$ | async | date: 'mm:ss') + ' / ' + (playerService.fullTrackTime$ | async | date: 'mm:ss') }}
+      </p>
+    </div>
+
+    <div class="video-buttons-item">
+      <svg
+        width="21"
+        height="21"
+        viewBox="0 0 24 24"
+        class="control-icon v-btn"
+        (click)="playerService.muteVolume()"
+      >
+        <path [attr.d]="controls.iconVolume" />
+      </svg>
+      <div class="video-volume-wrap">
+        <input
+          #inputVolume
+          type="range"
+          max="100"
+          title="Громкость"
+          class="video-volume"
+          (input)="playerService.volume$.next(getValue($event))"
+          [value]="playerService.volume$ | async">
+        <span
+          [style.width]="(playerService.volume$ | async) > 0 ? (playerService.volume$ | async) + '%' : 0"
+        ></span>
+      </div>
+
+      <svg
+        width="21"
+        height="21"
+        viewBox="0 0 24 24"
+        class="control-icon"
+        (click)="playerService.toggleFullScreen()"
+      >
+        <path [attr.d]="controls.fullscreen" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="video-track"
+       #timelineContainer
+       (click)="onTimelineMove($event, timeline, timelineContainer)"
+  >
+    <div #timeline class="timeline"
+         [style.width.%]="(playerService.currentTrackTime$  | async) / ((playerService.fullTrackTime$ | async) / 100)"
+    ></div>
+    <div #buffered class="buffered" [style.width.%]="playerService.progressTrackBuffer$ | async"></div>
+  </div>
+</div>

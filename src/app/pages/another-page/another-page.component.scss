@@ -1,0 +1,9 @@
+.btn {
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: #ff7f8a;
+  margin-bottom: 0.6rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

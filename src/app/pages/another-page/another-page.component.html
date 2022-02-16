@@ -1,0 +1,9 @@
+<h1 style="margin-bottom: 0.6rem">Another Page</h1>
+
+<button class="btn" (click)="changeSrc('/assets/video/video.mp4')">1 ссылка</button>
+<br>
+<button class="btn" (click)="changeSrc('https://api.academypsb.ru/education/streaming/media/courses/videos/123/1632736690.843429.mp4')">2 ссылка</button>
+
+<hr>
+
+<ngx-player [src]="src"></ngx-player>

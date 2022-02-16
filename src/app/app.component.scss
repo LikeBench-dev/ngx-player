@@ -1,0 +1,31 @@
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  .nav {
+    position: absolute;
+    width: 100%;
+    background: #92d0ea;
+    padding: 1rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span:first-child {
+      margin-right: 1rem;
+    }
+    span {
+      font-size: 1.2rem;
+      cursor: pointer;
+      &:hover {
+        color: purple;
+      }
+    }
+  }
+}

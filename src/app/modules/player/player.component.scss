@@ -1,0 +1,47 @@
+:host {
+  //width: 870px;
+  max-width: 912px;
+  //min-height: 350px;
+  //max-height: 513px;
+  height: 513px;
+}
+.ng-player-wrapper {
+  //max-width: 800px;
+  max-width: 912px;
+  min-height: 350px;
+  max-height: 513px;
+  //background: #46494e;
+  background: var(--dark-mirage);
+  position: relative;
+  overflow: hidden;
+  //&:not(:fullscreen):hover {
+  //  .video-controls {
+  //    &.play {
+  //      transform: translateY(0);
+  //    }
+  //  }
+  //}
+  //.video-controls {
+  //  &.play {
+  //    transform: translateY(100%);
+  //    &:hover {
+  //      transform: translateY(0);
+  //    }
+  //  }
+  //}
+}
+
+
+
+.video {
+  min-width: 912px;
+  max-width: inherit;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+  object-fit: contain;
+  min-height: 350px;
+  max-height: inherit;
+}
+
+
